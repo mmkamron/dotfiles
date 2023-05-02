@@ -9,6 +9,12 @@ return {
         end
     },
     {
+        'vimwiki/vimwiki',
+        init = function()
+            vim.g.vimwiki_list = { { path = '~/Documents/vimwiki', syntax = 'markdown', ext = '.md' } }
+        end
+    },
+    {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.1',
         dependencies = {
@@ -84,6 +90,5 @@ return {
     { "Pocco81/auto-save.nvim" },
     { 'numToStr/Comment.nvim', opts = {} },
     { 'NvChad/nvterm',         opts = {} },
-    { 'vimwiki/vimwiki' },
     { 'github/copilot.vim' },
 }
