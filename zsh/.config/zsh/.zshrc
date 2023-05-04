@@ -67,7 +67,7 @@ bindkey -s '^o' 'lfcd\n'
 
 bindkey -s '^a' 'bc -lq\n'
 
-bindkey -s '^t' 'tmux-sessionizer\n'
+bindkey -s '^f' 'tmux-sessionizer\n'
 
 bindkey '^[[P' delete-char
 
@@ -76,4 +76,4 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # load syntax highlighting; should be last.
-source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+source $XDG_CONFIG_HOME/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null

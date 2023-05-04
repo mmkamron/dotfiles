@@ -14,15 +14,15 @@ return {
             vim.g.vimwiki_list = { { path = '~/Documents/vimwiki', syntax = 'markdown', ext = '.md' } }
         end
     },
+    { 'neovim/nvim-lspconfig' },
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.1',
         dependencies = {
-            'nvim-lua/plenary.nvim',
+            "nvim-lua/plenary.nvim",
             { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", },
-            "nvim-telescope/telescope-dap.nvim",
-            "nvim-telescope/telescope-file-browser.nvim",
             "nvim-treesitter/nvim-treesitter-context",
+            "jose-elias-alvarez/null-ls.nvim"
         }
     },
     {
@@ -38,47 +38,6 @@ return {
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
-        dependencies = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' }, -- Required
-            {
-                -- Optional
-                'williamboman/mason.nvim',
-                build = function()
-                    pcall(vim.cmd.MasonUpdate)
-                end,
-            },
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },     -- Required
-        }
-    },
-    {
-        "mfussenegger/nvim-dap",
-        opt = {},
-        dependencies = {
-            "theHamsta/nvim-dap-virtual-text",
-            "rcarriga/nvim-dap-ui",
-            -- "leoluz/nvim-dap-go",
-            "jbyuki/one-small-step-for-vimkind",
-            "mxsdev/nvim-dap-vscode-js",
-            {
-                "microsoft/vscode-js-debug",
-                opt = {},
-                build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
-            },
-        },
-        config = function()
-            require("config.dap").setup()
-        end,
-        enabled = true,
-    },
-    {
         "folke/which-key.nvim",
         config = function()
             vim.o.timeout = true
@@ -91,4 +50,5 @@ return {
     { 'numToStr/Comment.nvim', opts = {} },
     { 'NvChad/nvterm',         opts = {} },
     { 'github/copilot.vim' },
+    { 'sindrets/diffview.nvim' }
 }
