@@ -1,6 +1,6 @@
 vim.g.netrw_banner = 0
 vim.g.copilot_enabled = false
-vim.g.netrw_winsize = 30
+vim.g.netrw_winsize = 50
 vim.opt.nu = true
 vim.opt.rnu = true
 vim.opt.tabstop = 4

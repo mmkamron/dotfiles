@@ -18,6 +18,12 @@ vim.keymap.set("n", "cd", '<cmd>cd %:p:h<CR>', {})
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
+-- dap
+vim.keymap.set("n", "<leader>b", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
+vim.keymap.set("n", "<F5>", "<cmd>lua require'dap'.continue()<CR>")
+vim.keymap.set("n", "<F9>", "<cmd>lua require'dap'.step_into()<CR>")
+vim.keymap.set("n", "<F10>", "<cmd>lua require'dap'.step_over()<CR>")
+
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
