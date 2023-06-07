@@ -1,11 +1,12 @@
 return {
     {
-        'rose-pine/neovim',
+        "catppuccin/nvim",
+        lazy = false,
         priority = 1000,
-        name = "rose-pine",
-        opts = function()
-            vim.cmd.colorscheme "rose-pine"
-        end
+        name = "catppuccin",
+        config = function()
+            vim.cmd([[colorscheme catppuccin]])
+        end,
     },
     {
         "nvim-treesitter/nvim-treesitter",
@@ -32,7 +33,9 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter-context",
+            "ThePrimeagen/git-worktree.nvim",
         },
+        config = function() require("telescope").load_extension("git_worktree") end,
     },
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -58,8 +61,11 @@ return {
         ft = "go",
         dependencies = {
             { 'theHamsta/nvim-dap-virtual-text', opts = {} },
-            { 'leoluz/nvim-dap-go', opts = {} }
-        }
+            { 'leoluz/nvim-dap-go',              opts = {} }
+        },
+        config = function()
+            require "plugins.configs.dap"
+        end
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
@@ -72,4 +78,5 @@ return {
     { 'NvChad/nvterm',         opts = {} },
     { 'github/copilot.vim' },
     { 'sindrets/diffview.nvim' },
+    { 'tpope/vim-fugitive' },
 }

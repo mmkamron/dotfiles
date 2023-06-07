@@ -1,3 +1,5 @@
+vim.g.vimwiki_list = { { path = '/home/arch/Sync/Documents/vimwiki' } }
+vim.opt.guicursor = "i:block"
 vim.g.netrw_banner = 0
 vim.g.copilot_enabled = false
 vim.g.netrw_winsize = 50

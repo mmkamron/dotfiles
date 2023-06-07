@@ -19,8 +19,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 local lspconfig = require("lspconfig")
-lspconfig.pyright.setup {}
 lspconfig.gopls.setup {}
-lspconfig.tsserver.setup {}
-lspconfig.rust_analyzer.setup {}
 lspconfig.lua_ls.setup {}
+lspconfig.clangd.setup {}

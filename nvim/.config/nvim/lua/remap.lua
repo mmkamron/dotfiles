@@ -1,5 +1,3 @@
-vim.g.vimwiki_list = { { path = '/home/arch/Sync/Documents/vimwiki' } }
-vim.opt.guicursor = "i:block"
 vim.keymap.set("n", "<leader>pv", vim.cmd.Vex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -28,14 +26,18 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>lr', builtin.lsp_references, {})
 vim.keymap.set('n', '<leader>rg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fn', function() builtin.find_files({ cwd = "~/.config/nvim/" }) end, {})
+vim.keymap.set('n', '<leader>fw', function() require('telescope').extensions.git_worktree.git_worktrees() end, {})
 
 local ui = require('harpoon.ui')
 vim.keymap.set('n', '<leader>a', require("harpoon.mark").add_file, {})
 vim.keymap.set('n', '<C-M>', ui.toggle_quick_menu, {})
 vim.keymap.set('n', '<C-K>', ui.nav_next, {})
 vim.keymap.set('n', '<C-J>', ui.nav_prev, {})
+vim.keymap.set('n', '<C-L>', function() ui.nav_file(3) end, {})
+vim.keymap.set('n', '<C-;>', function() ui.nav_file(4) end, {})
 
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
