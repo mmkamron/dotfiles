@@ -1,15 +1,17 @@
 window:
   decorations: none
+
 scrolling:
   history: 10000
-
   multiplier: 3
 
 font:
   normal:
     family: "JetBrainsMono Nerd Font"
   size: 14.0
+
 draw_bold_text_with_bright_colors: false
+
 colors:
   primary:
     background: "0x1d2021"
@@ -26,7 +28,6 @@ colors:
     magenta: "0xd3869b"
     cyan: "0x8ec07c"
     white: "0xd5c4a1"
-
   bright:
     black: "0x665c54"
     red: "0xfe8019"
@@ -36,7 +37,6 @@ colors:
     magenta: "0xebdbb2"
     cyan: "0xd65d0e"
     white: "0xfbf1c7"
-
   indexed_colors:
     - { index: 16, color: "#fe8019" }
     - { index: 17, color: "#d65d0e" }

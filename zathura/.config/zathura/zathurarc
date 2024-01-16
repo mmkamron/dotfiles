@@ -14,6 +14,7 @@ map J zoom out
 map i recolor
 map p print
 map g goto top
+set scroll-step 100
 
 set notification-error-bg       "#32302f" # bg
 set notification-error-fg       "#fb4934" # bright:red
