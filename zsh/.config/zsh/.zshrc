@@ -77,3 +77,5 @@ bindkey '^e' edit-command-line
 
 # load syntax highlighting; should be last.
 source $XDG_CONFIG_HOME/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+
+[ -f "/home/arch/.ghcup/env" ] && source "/home/arch/.ghcup/env" # ghcup-env

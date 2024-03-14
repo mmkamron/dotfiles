@@ -55,6 +55,10 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.bo.softtabstop = 4
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -66,6 +70,19 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<C-n>', '<cmd>Lex<CR>', { desc = 'Open netrw' })
+vim.keymap.set('n', '<A-h>', function()
+  require('nvterm.terminal').toggle 'vertical'
+end, { desc = 'Toggle vertical term' })
+vim.keymap.set('n', '<A-m>', function()
+  require('nvterm.terminal').send('go run .', 'vertical')
+end, { desc = 'Go run' })
+vim.keymap.set('t', '<A-h>', function()
+  require('nvterm.terminal').toggle 'vertical'
+end, { desc = 'Toggle vertical term' })
+vim.keymap.set('t', '<A-m>', function()
+  require('nvterm.terminal').send('go run .', 'vertical')
+end, { desc = 'Go run' })
 
 --  See `:help lua-guide-autocommands`
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -153,7 +170,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
+      -- vim.keymap.set('n', '<leader>gr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>st', builtin.colorscheme, { desc = '[S]earch [T]hemes' })
@@ -194,7 +211,7 @@ require('lazy').setup({
           end
 
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          map('sr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
           map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
           map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
           map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
@@ -293,7 +310,7 @@ require('lazy').setup({
       },
       formatters_by_ft = {
         lua = { 'stylua' },
-        go = { 'gofmt' },
+        go = { 'gofmt', 'goimports' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -453,11 +470,36 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'vimwiki/vimwiki',
+    lazy = false,
+    init = function()
+      vim.g.vimwiki_list = { { path = '~/Documents/vimwiki/', syntax = 'markdown', ext = '.md' } }
+    end,
+  },
+
+  {
+    'tpope/vim-fugitive',
+  },
+
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = true,
+  },
+
+  {
+    'NvChad/nvterm',
+    config = function()
+      require('nvterm').setup()
+    end,
+  },
+
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you have a Nerd Font, set icons to an empty table which will use the
@@ -481,4 +523,4 @@ require('lazy').setup({
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- vim =  ts=2 sts=2 sw=2 et
