@@ -1,0 +1,7 @@
+mpv/.config/mpv/watch_later
+nvim/.config/nvim/lazy-lock.json
+zsh/.config/zsh/.zcompdump
+nvim/.config/nvim/lazy-lock.json
+!nvim/.config/nvim/lua/custom
+nvim/.config/nvim/.stylua.toml
+# nvim/.config/nvim/

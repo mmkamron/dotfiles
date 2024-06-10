@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(fd -H . ~/  ~/go/src -d 3 --type d --type l | fzf)
+    selected=$(fd -H . ~/ -d 5 --type d --type l | fzf)
 fi
 
 if [[ -z $selected ]]; then

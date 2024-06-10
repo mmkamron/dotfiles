@@ -11,6 +11,8 @@ setopt interactive_comments
 HISTFILE=~/.cache/zsh/history
 HISTSIZE=10000000
 SAVEHIST=10000000
+setopt appendhistory
+setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 
 # Load aliases and shortcuts if existent.

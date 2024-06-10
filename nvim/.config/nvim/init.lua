@@ -61,6 +61,7 @@ vim.opt.expandtab = true
 vim.bo.softtabstop = 4
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<C-n>', '<cmd>NvimTreeToggle<CR>')
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
@@ -70,19 +71,25 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-vim.keymap.set('n', '<C-n>', '<cmd>Lex<CR>', { desc = 'Open netrw' })
+vim.keymap.set('n', '<leader>ee', 'oif err != nil {<CR>}<Esc>Oreturn err<Esc>')
 vim.keymap.set('n', '<A-h>', function()
   require('nvterm.terminal').toggle 'vertical'
 end, { desc = 'Toggle vertical term' })
 vim.keymap.set('n', '<A-m>', function()
   require('nvterm.terminal').send('go run .', 'vertical')
 end, { desc = 'Go run' })
+vim.keymap.set('n', '<A-j>', function()
+  require('nvterm.terminal').send('g++ -std=c++11 -O2 -Wall main.cpp -o main && ./main', 'vertical')
+end, { desc = 'C++ run' })
 vim.keymap.set('t', '<A-h>', function()
   require('nvterm.terminal').toggle 'vertical'
 end, { desc = 'Toggle vertical term' })
 vim.keymap.set('t', '<A-m>', function()
   require('nvterm.terminal').send('go run .', 'vertical')
 end, { desc = 'Go run' })
+vim.keymap.set('t', '<A-j>', function()
+  require('nvterm.terminal').send('g++ -std=c++11 -O2 -Wall main.cpp -o main && ./main', 'vertical')
+end, { desc = 'C++ run' })
 
 --  See `:help lua-guide-autocommands`
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -246,7 +253,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {},
         gopls = {},
         lua_ls = {
           -- cmd = {...},
@@ -492,6 +499,13 @@ require('lazy').setup({
     'NvChad/nvterm',
     config = function()
       require('nvterm').setup()
+    end,
+  },
+
+  {
+    'nvim-tree/nvim-tree.lua',
+    config = function()
+      require('nvim-tree').setup {}
     end,
   },
 
