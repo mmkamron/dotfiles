@@ -103,24 +103,6 @@ require("lazy").setup({
 			},
 		},
 	},
-
-	{
-		"folke/which-key.nvim",
-		event = "VimEnter",
-		config = function()
-			require("which-key").setup()
-
-			-- Document existing key chains
-			require("which-key").register({
-				["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
-				["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
-				["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
-				["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
-				["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
-			})
-		end,
-	},
-
 	{
 		"nvim-telescope/telescope.nvim",
 		event = "VimEnter",
@@ -203,7 +185,6 @@ require("lazy").setup({
 
 			local servers = {
 				clangd = {},
-				gopls = {},
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -254,7 +235,6 @@ require("lazy").setup({
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
-				go = { "gofmt", "goimports" },
 			},
 		},
 	},
@@ -354,7 +334,6 @@ require("lazy").setup({
 		build = ":TSUpdate",
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "go" },
 				auto_install = true,
 				highlight = { enable = true },
 				indent = { enable = true },
