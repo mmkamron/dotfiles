@@ -21,6 +21,7 @@
 	  pkgs.stow
 	  pkgs.alacritty
 	  pkgs.mkalias
+	  pkgs.htop
         ];
       system.activationScripts.applications.text = let
 	env = pkgs.buildEnv {
