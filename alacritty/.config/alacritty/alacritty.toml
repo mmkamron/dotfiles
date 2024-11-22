@@ -60,10 +60,10 @@ shape = "Block"
 shape = "Block"
 
 [font]
-size = 14.0
+size = 18.0
 
-[font.normal]
-family = "JetBrainsMono Nerd Font"
+# [font.normal]
+# family = "JetBrainsMono Nerd Font"
 
 [[keyboard.bindings]]
 action = "Paste"
@@ -79,5 +79,5 @@ mods = "Alt"
 history = 10000
 multiplier = 3
 
-[window]
-decorations = "none"
+# [window]
+# decorations = "none"
