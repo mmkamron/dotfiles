@@ -35,6 +35,13 @@
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "x86_64-darwin";
+
+      system.defaults = {
+	dock.autohide = true;
+	finder.FXPreferredViewStyle = "clmv";
+        NSGlobalDomain.AppleInterfaceStyle = "Dark";
+        NSGlobalDomain.KeyRepeat = 2;
+      };
     };
   in
   {
