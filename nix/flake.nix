@@ -22,6 +22,7 @@
 	  pkgs.alacritty
 	  pkgs.mkalias
 	  pkgs.htop
+	  pkgs.zoxide
         ];
       system.activationScripts.applications.text = let
 	env = pkgs.buildEnv {
