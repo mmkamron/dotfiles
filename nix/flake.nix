@@ -18,12 +18,22 @@
 	  pkgs.git
 	  pkgs.neovim
 	  pkgs.fastfetch
-	  pkgs.stow
 	  pkgs.alacritty
 	  pkgs.mkalias
 	  pkgs.htop
 	  pkgs.zoxide
+	  pkgs.go
+	  pkgs.gopls
+	  pkgs.zathura
+	  pkgs.maccy
+	  pkgs.tldr
+	  pkgs.qemu
         ];
+
+      fonts.packages = [
+	(pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })	
+      ];
+
       system.activationScripts.applications.text = let
 	env = pkgs.buildEnv {
 	  name = "system-applications";
@@ -70,11 +80,11 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
-    darwinConfigurations."MacBook-102" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
       modules = [ configuration ];
     };
 
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."MacBook-102".pkgs;
+    darwinPackages = self.darwinConfigurations."mac".pkgs;
   };
 }
