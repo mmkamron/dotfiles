@@ -62,8 +62,24 @@ shape = "Block"
 [font]
 size = 18.0
 
-# [font.normal]
-# family = "JetBrainsMono Nerd Font"
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
 
 [[keyboard.bindings]]
 action = "Paste"
@@ -81,3 +97,7 @@ multiplier = 3
 
 # [window]
 # decorations = "none"
+
+[window.dimensions]
+columns = 140
+lines = 40

@@ -20,7 +20,7 @@
 	  pkgs.fastfetch
 	  pkgs.alacritty
 	  pkgs.mkalias
-	  pkgs.htop
+	  pkgs.btop
 	  pkgs.zoxide
 	  pkgs.go
 	  pkgs.gopls
@@ -28,7 +28,15 @@
 	  pkgs.maccy
 	  pkgs.tldr
 	  pkgs.qemu
+	  pkgs.ripgrep
+	  pkgs.libgccjit
+	  pkgs.clang-tools
         ];
+
+      environment.variables =
+	{
+	  EDITOR = "nvim";
+	};
 
       fonts.packages = [
 	(pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })	
@@ -69,12 +77,22 @@
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "x86_64-darwin";
 
+      security.pam.enableSudoTouchIdAuth = true;
+
       system.defaults = {
 	dock.autohide = true;
 	finder.FXPreferredViewStyle = "clmv";
+	finder.AppleShowAllExtensions = true;
         NSGlobalDomain.AppleInterfaceStyle = "Dark";
         NSGlobalDomain.KeyRepeat = 2;
+	screencapture.location = "~/Pictures/screenshots";
+	controlcenter.BatteryShowPercentage = true;
+	controlcenter.Bluetooth = true;
       };
+
+      system.keyboard.enableKeyMapping = true;
+      system.keyboard.remapCapsLockToEscape = true;
+
     };
   in
   {
