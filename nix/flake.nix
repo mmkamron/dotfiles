@@ -17,7 +17,8 @@
 	  pkgs.tmux
 	  pkgs.git
 	  pkgs.neovim
-	  pkgs.fastfetch
+	  pkgs.ripgrep
+	  pkgs.darwin.trash
 	  pkgs.alacritty
 	  pkgs.mkalias
 	  pkgs.btop
@@ -28,9 +29,6 @@
 	  pkgs.maccy
 	  pkgs.tldr
 	  pkgs.qemu
-	  pkgs.ripgrep
-	  pkgs.libgccjit
-	  pkgs.clang-tools
         ];
 
       environment.variables =
