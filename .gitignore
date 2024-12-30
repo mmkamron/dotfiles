@@ -4,4 +4,4 @@ zsh/.config/zsh/.zcompdump
 nvim/.config/nvim/lazy-lock.json
 !nvim/.config/nvim/lua/custom
 nvim/.config/nvim/.stylua.toml
-# nvim/.config/nvim/
+.gitignore
