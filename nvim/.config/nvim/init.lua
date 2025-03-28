@@ -50,27 +50,44 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.bo.softtabstop = 4
 
+vim.keymap.set("n", "<leader>ai", function()
+	local cursor = vim.api.nvim_win_get_cursor(0)
+	vim.cmd("%!goimports")
+	vim.api.nvim_win_set_cursor(0, cursor)
+end, { silent = true })
+
+-- Quickfix list
+vim.keymap.set("n", "]q", "<cmd>cnext<CR>")
+vim.keymap.set("n", "[q", "<cmd>cprev<CR>")
+vim.keymap.set("n", "<leader>co", "<cmd>copen<CR>")
+vim.keymap.set("n", "<leader>cc", "<cmd>cclose<CR>")
+
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<CR>")
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "<leader>t", "<cmd>TodoTelescope<CR>")
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
-vim.keymap.set("n", "<A-h>", function()
+vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Olog.Fatal(err)<Esc>")
+vim.keymap.set("n", "<D-j>", function()
 	require("nvterm.terminal").toggle("vertical")
 end, { desc = "Toggle vertical term" })
-vim.keymap.set("t", "<A-h>", function()
+vim.keymap.set("t", "<D-j>", function()
 	require("nvterm.terminal").toggle("vertical")
 end, { desc = "Toggle vertical term" })
-vim.keymap.set("t", "<A-j>", function()
-	require("nvterm.terminal").send("make run", "vertical")
-end, { desc = "make run" })
+
+vim.api.nvim_create_autocmd("CursorHoldI", {
+	pattern = "*",
+	callback = function()
+		vim.lsp.buf.signature_help()
+	end,
+})
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
@@ -88,6 +105,12 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	{
+		"yorickpeterse/nvim-pqf",
+		config = function()
+			require("pqf").setup()
+		end,
+	},
 	"tpope/vim-sleuth",
 	{ "numToStr/Comment.nvim", opts = {} },
 
@@ -133,7 +156,9 @@ require("lazy").setup({
 
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
-			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+			vim.keymap.set("n", "<leader>sf", function()
+				builtin.find_files({ no_ignore = true, hidden = true, file_ignore_patterns = { "^.git/" } })
+			end, { desc = "[S]earch [F]iles" })
 			vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
@@ -184,7 +209,7 @@ require("lazy").setup({
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 			local servers = {
-				clangd = {},
+				gopls = {},
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -205,11 +230,17 @@ require("lazy").setup({
 				},
 			}
 
+			-- require("lspconfig").clangd.setup({
+			-- 	filetypes = { "cpp" },
+			-- })
+			require("lspconfig").htmx.setup({})
+
 			require("mason").setup()
 
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua",
+				"clang-format",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 			require("mason-lspconfig").setup({
@@ -235,6 +266,8 @@ require("lazy").setup({
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
+				cpp = { "clang-format" },
+				c = { "clang-format" },
 			},
 		},
 	},
