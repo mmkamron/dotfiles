@@ -12,24 +12,28 @@
     configuration = { pkgs, config, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [ 
-	  pkgs.tmux
-	  pkgs.git
-	  pkgs.neovim
-	  pkgs.ripgrep
-	  pkgs.darwin.trash
-	  pkgs.alacritty
-	  pkgs.mkalias
-	  pkgs.btop
-	  pkgs.zoxide
-	  pkgs.go
-	  pkgs.gopls
-	  pkgs.zathura
-	  pkgs.maccy
-	  pkgs.tldr
-	  pkgs.qemu
-        ];
+      environment.systemPackages = with pkgs;
+	[
+	  tmux
+	  git
+	  neovim
+	  ripgrep
+	  darwin.trash
+	  alacritty
+	  mkalias
+	  btop
+	  zoxide
+	  go
+	  gopls
+	  zathura
+	  maccy
+	  tldr
+	  qemu
+	  htmx-lsp
+	  tailwindcss
+	  templ
+	  lima
+	];
 
       environment.variables =
 	{

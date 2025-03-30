@@ -95,9 +95,10 @@ mods = "Alt"
 history = 10000
 multiplier = 3
 
-# [window]
-# decorations = "none"
+# [window.dimensions]
+# columns = 140
+# lines = 40
 
-[window.dimensions]
-columns = 140
-lines = 40
+[window]
+startup_mode = "SimpleFullscreen"
+option_as_alt = "OnlyLeft"

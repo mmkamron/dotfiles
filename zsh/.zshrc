@@ -18,5 +18,15 @@ setopt hist_find_no_dups
 # Aliases
 alias ls="ls --color"
 alias vim="nvim"
+alias sz="screen zathura"
+alias venv="source env/bin/activate"
 
 eval "$(zoxide init --cmd cd zsh)"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -L$HOMEBREW_PREFIX/opt/llvm/lib/unwind -lunwind"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/mmkamron/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mmkamron/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/mmkamron/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mmkamron/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
