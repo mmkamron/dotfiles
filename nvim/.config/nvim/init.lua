@@ -75,12 +75,6 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Olog.Fatal(err)<Esc>")
-vim.keymap.set("n", "<D-j>", function()
-	require("nvterm.terminal").toggle("vertical")
-end, { desc = "Toggle vertical term" })
-vim.keymap.set("t", "<D-j>", function()
-	require("nvterm.terminal").toggle("vertical")
-end, { desc = "Toggle vertical term" })
 
 vim.api.nvim_create_autocmd("CursorHoldI", {
 	pattern = "*",
@@ -105,12 +99,6 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{
-		"yorickpeterse/nvim-pqf",
-		config = function()
-			require("pqf").setup()
-		end,
-	},
 	"tpope/vim-sleuth",
 	{ "numToStr/Comment.nvim", opts = {} },
 
@@ -230,11 +218,6 @@ require("lazy").setup({
 				},
 			}
 
-			-- require("lspconfig").clangd.setup({
-			-- 	filetypes = { "cpp" },
-			-- })
-			require("lspconfig").htmx.setup({})
-
 			require("mason").setup()
 
 			local ensure_installed = vim.tbl_keys(servers or {})
@@ -341,13 +324,6 @@ require("lazy").setup({
 	},
 
 	{
-		"folke/todo-comments.nvim",
-		event = "VimEnter",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = { signs = false },
-	},
-
-	{
 		"echasnovski/mini.nvim",
 		config = function()
 			require("mini.ai").setup({ n_lines = 500 })
@@ -383,14 +359,6 @@ require("lazy").setup({
 	},
 
 	{
-		"vimwiki/vimwiki",
-		lazy = false,
-		init = function()
-			vim.g.vimwiki_list = { { path = "~/Documents/vimwiki/", syntax = "markdown", ext = ".md" } }
-		end,
-	},
-
-	{
 		"tpope/vim-fugitive",
 	},
 
@@ -398,13 +366,6 @@ require("lazy").setup({
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = true,
-	},
-
-	{
-		"NvChad/nvterm",
-		config = function()
-			require("nvterm").setup()
-		end,
 	},
 
 	{
