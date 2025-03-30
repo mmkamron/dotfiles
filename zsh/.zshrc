@@ -1,6 +1,8 @@
 bindkey -v
 bindkey ^R history-incremental-search-backward 
 bindkey ^S history-incremental-search-forward
+PROMPT='%~%f> '
+zstyle ':completion:*:descriptions' format ''
 
 # History
 HISTSIZE=5000
@@ -17,6 +19,9 @@ setopt hist_find_no_dups
 
 # Aliases
 alias ls="ls --color"
-alias vim="nvim"
+alias v="nvim"
+alias V="sudo vim"
+alias p="sudo pacman"
+alias g="git clone"
 
 eval "$(zoxide init --cmd cd zsh)"
