@@ -93,6 +93,12 @@ bindsym $mod+u layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+t layout toggle split
 
+# Increase brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+
+# Decrease brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+
 # change focus between tiling / floating windows
 # bindsym $mod+space focus mode_toggle
 
@@ -126,7 +132,7 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
-bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+semicolon workspace back_and_forth
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1

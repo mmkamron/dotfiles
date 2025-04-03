@@ -23,5 +23,6 @@ alias v="nvim"
 alias V="sudo vim"
 alias p="sudo pacman"
 alias g="git clone"
+alias z="nohup zathura"
 
 eval "$(zoxide init --cmd cd zsh)"

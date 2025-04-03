@@ -9,7 +9,7 @@ idle_fg = "#abcdef"
 [icons]
 icons = "material-nf"
 [icons.overrides]
-bat = ["|E|", "|_|", "", ""]
+bat = ["", "", "", ""]
 bat_charging = "󰢝"
 
 [[block]]
