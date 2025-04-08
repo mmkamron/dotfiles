@@ -5,11 +5,13 @@ alsa-utils
 base
 base-devel
 bind
+bluetuith
+bluez-utils
 btop
 clang
 cpupower
+cronie
 dhclient
-fastfetch
 fzf
 git
 gnu-netcat
@@ -29,6 +31,7 @@ libpulse
 linux
 linux-firmware
 man-db
+mpv
 neovim
 net-tools
 networkmanager
@@ -40,6 +43,7 @@ pipewire
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
+qbittorrent
 rofi
 rofi-greenclip
 speedtest-cli
@@ -55,8 +59,10 @@ ttf-joypixels
 ttf-nerd-fonts-symbols
 unzip
 vim
+webkit2gtk-4.1
 wget
 whois
+wireguard-tools
 wireplumber
 xcape
 xclip
