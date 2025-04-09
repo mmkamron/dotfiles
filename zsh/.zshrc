@@ -16,14 +16,22 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Aliases
-alias ls="ls --color"
-alias vim="nvim"
+alias ls="eza"
+alias v="nvim"
+alias V="sudo vim"
 alias sz="screen zathura"
 alias venv="source env/bin/activate"
+alias g="git clone"
+alias grep="rga"
+alias cat="bat"
+alias find="fd"
+alias dig="dog"
+alias curl="curlie"
 
 eval "$(zoxide init --cmd cd zsh)"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export LDFLAGS="-L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -L$HOMEBREW_PREFIX/opt/llvm/lib/unwind -lunwind"
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/mmkamron/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mmkamron/Downloads/google-cloud-sdk/path.zsh.inc'; fi
