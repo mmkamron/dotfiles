@@ -18,11 +18,19 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Aliases
-alias ls="ls --color"
+alias ls="eza"
 alias v="nvim"
 alias V="sudo vim"
 alias p="sudo pacman"
 alias g="git clone"
-alias z="nohup zathura"
+alias z="devour zathura"
+alias grep="rga"
+alias cat="bat"
+alias find="fd"
+alias dig="dog"
+alias curl="curlie"
+alias mpv="devour mpv"
 
 eval "$(zoxide init --cmd cd zsh)"
+
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx

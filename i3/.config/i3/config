@@ -205,5 +205,7 @@ assign [class="Google-chrome"] 4
 assign [class="mpv"] 2
 assign [class="Alacritty"] 1
 assign [class="TelegramDesktop"] 9
+assign [class="qBittorrent"] 8
 focus_on_window_activation focus
 bindsym Print exec --no-startup-id flameshot gui
+bindsym $mod+Shift+BackSpace exec i3lock

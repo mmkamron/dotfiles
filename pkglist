@@ -4,6 +4,7 @@ alacritty
 alsa-utils
 base
 base-devel
+bat
 bind
 bluetuith
 bluez-utils
@@ -11,7 +12,14 @@ btop
 clang
 cpupower
 cronie
+curlie
+devour
 dhclient
+dog
+dust
+eza
+fd
+flameshot
 fzf
 git
 gnu-netcat
@@ -44,6 +52,7 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 qbittorrent
+ripgrep-all
 rofi
 rofi-greenclip
 speedtest-cli
@@ -64,6 +73,7 @@ wget
 whois
 wireguard-tools
 wireplumber
+wireshark-qt
 xcape
 xclip
 xdotool
