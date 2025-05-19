@@ -29,6 +29,7 @@ alias cat="bat"
 alias find="fd"
 alias dig="dog"
 alias curl="curlie"
+alias df="dysk"
 alias mpv="devour mpv"
 
 eval "$(zoxide init --cmd cd zsh)"
