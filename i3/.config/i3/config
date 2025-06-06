@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -19,8 +19,11 @@ font pango:JetBrainsMono Nerd Font 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+exec --no-startup-id picom -b
+
+exec --no-startup-id clipmenud
+
 exec --no-startup-id ~/.config/remaps
-exec --no-startup-id bash -c "sleep 1 && xmodmap ~/.config/.Xmodmap"
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -56,12 +59,14 @@ tiling_drag modifier titlebar
 # start a terminal
 bindsym $mod+Return exec alacritty
 
+# start a browser
+bindsym $mod+w exec google-chrome-stable
+
 # kill focused window
 bindsym $mod+q kill
 
-# start rofi (a program launcher)
-bindsym $mod+space exec rofi -show combi
-bindsym $mod+Shift+space exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+bindsym $mod+space exec dmenu_run -fn 'JetBrainsMono Nerd Font-12'
+bindsym $mod+i exec clipmenu -fn 'JetBrainsMono Nerd Font-12'
 
 # change focus
 bindsym $mod+h focus left
@@ -94,8 +99,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+u layout stacking
-bindsym $mod+w layout tabbed
+# bindsym $mod+u layout stacking
+bindsym $mod+u layout tabbed
+# bindsym $mod+w layout tabbed
 bindsym $mod+t layout toggle split
 
 # Increase brightness
@@ -105,13 +111,16 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 # change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
+# bindsym $mod+Shift+space focus mode_toggle
+bindsym $mod+Shift+space floating toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
 
 # open bluetooth manager
 bindsym $mod+Shift+b exec --no-startup-id alacritty -e bluetuith
+
+bindsym $mod+m exec --no-startup-id alacritty -e rmpc
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -214,3 +223,6 @@ assign [class="qBittorrent"] 8
 focus_on_window_activation focus
 bindsym Print exec --no-startup-id flameshot gui
 bindsym $mod+Shift+BackSpace exec i3lock
+bindsym $mod+p exec --no-startup-id rmpc togglepause
+bindsym $mod+Shift+p exec --no-startup-id rmpc prev
+bindsym $mod+Shift+n exec --no-startup-id rmpc next

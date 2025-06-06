@@ -84,7 +84,7 @@ y = 0
 [[keyboard.bindings]]
 action = "Paste"
 key = "V"
-mods = "Alt"
+mods = "Control"
 
 [[keyboard.bindings]]
 action = "Copy"
@@ -95,8 +95,8 @@ mods = "Alt"
 history = 10000
 multiplier = 3
 
-# [window]
-# decorations = "none"
+[window]
+opacity = 0.85
 
 [window.dimensions]
 columns = 140

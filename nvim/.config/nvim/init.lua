@@ -98,6 +98,7 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	"xiyaowong/transparent.nvim",
 	"tpope/vim-sleuth",
 	{ "numToStr/Comment.nvim", opts = {} },
 

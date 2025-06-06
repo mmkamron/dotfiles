@@ -1,11 +1,16 @@
 #!/bin/sh
 
+# Set keyboard repeat rate
 xset r rate 300 50
-# Map the caps lock key to super, and map the menu key to right super.
-setxkbmap -option caps:super,altwin:menu_win
-setxkbmap -layout us,ru
-setxkbmap -option 'grp:alt_shift_toggle'
-# When caps lock is pressed only once, treat it as escape.
-killall xcape 2>/dev/null ; xcape -e 'Super_L=Escape'
-# Turn off caps lock if on since there is no longer a key for it.
+
+# Set layout and switching with both Shift keys
+setxkbmap -layout us,ru -option 'grp:shifts_toggle'
+
+# Remap Caps Lock to Control
+setxkbmap -option 'caps:ctrl_modifier'
+
+# Use xcape to make Control (i.e., remapped Caps Lock) send Escape when tapped
+killall xcape 2>/dev/null ; xcape -e 'Control_L=Escape'
+
+# Make sure Caps Lock is off (even though we remapped it)
 xset -q | grep -q "Caps Lock:\s*on" && xdotool key Caps_Lock
