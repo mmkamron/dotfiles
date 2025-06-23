@@ -17,22 +17,14 @@
 	  tmux
 	  git
 	  neovim
-	  ripgrep
 	  darwin.trash
 	  alacritty
 	  mkalias
 	  btop
 	  zoxide
-	  go
-	  gopls
 	  zathura
 	  maccy
 	  tldr
-	  qemu
-	  htmx-lsp
-	  tailwindcss
-	  templ
-	  lima
 	];
 
       environment.variables =
@@ -100,11 +92,11 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
-    darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."Kamron" = nix-darwin.lib.darwinSystem {
       modules = [ configuration ];
     };
 
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."mac".pkgs;
+    darwinPackages = self.darwinConfigurations."Kamron".pkgs;
   };
 }
