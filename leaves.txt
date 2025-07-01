@@ -1,0 +1,16 @@
+bat
+btop
+curlie
+eza
+fastfetch
+fd
+ffmpeg
+fprobe
+iperf3
+kanata
+neovim
+ripgrep
+stow
+wget
+yt-dlp
+zoxide
