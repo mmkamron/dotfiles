@@ -1,0 +1,42 @@
+(defcfg
+  process-unmapped-keys yes
+  concurrent-tap-hold yes
+  rapid-event-delay 2
+)
+
+(defsrc
+                0
+  caps f h j k l
+  rmet ralt rsft ← ↑ ↓ →
+)
+
+(deflayer default
+                    _
+  @cap @nav _ _ _ _
+  bspc f11 @rsft @ma← @ma↑ @ma↓ @ma→
+)
+
+(deflayer arrows
+                        lrld
+  _ _ left down up rght
+  _ _ _ _ _ _ _
+)
+
+(defalias
+  cap (tap-hold-press 200 200 esc lctl)
+  nav (tap-hold-press 1 1000 f (layer-toggle arrows))
+  rsft (tap-hold-press 200 200 mltp rsft)
+  ma↑ (movemouse-accel-up 1 1000 1 5)
+  ma← (movemouse-accel-left 1 1000 1 5)
+  ma↓ (movemouse-accel-down 1 1000 1 5)
+  ma→ (movemouse-accel-right 1 1000 1 5)
+)
+
+(platform (macos)
+  (defoverrides
+    (lctl bspc) (lalt bspc)
+    (lctl left) (lalt left)
+    (lctl right) (lalt right)
+    (lctl f) (lmet f)
+  )
+)
