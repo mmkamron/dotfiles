@@ -18,6 +18,7 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Aliases
+alias man="batman"
 alias ls="eza"
 alias v="nvim"
 alias V="sudo vim"
@@ -28,7 +29,6 @@ alias grep="rga"
 alias cat="bat"
 alias find="fd"
 alias dig="dog"
-alias curl="curlie"
 alias df="dysk"
 alias mpv="devour mpv"
 alias get_esp32='export PATH="$PATH:$HOME/esp/xtensa-esp32-elf/bin"'
@@ -49,3 +49,7 @@ PATH="$PATH:/usr/share/bcc/tools"
 PATH="$PATH:$GOBIN"
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+
+# Created by `pipx` on 2025-07-19 05:03:09
+export PATH="$PATH:/home/mmkamron/.local/bin"
+export AI_PROVIDER="pollinations"
