@@ -31,7 +31,21 @@ alias dig="dog"
 alias curl="curlie"
 alias df="dysk"
 alias mpv="devour mpv"
+alias get_esp32='export PATH="$PATH:$HOME/esp/xtensa-esp32-elf/bin"'
 
 eval "$(zoxide init --cmd cd zsh)"
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+EDITOR=nvim
+
+PATH="$PATH:/usr/share/bcc/tools"
+PATH="$PATH:$GOBIN"
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx

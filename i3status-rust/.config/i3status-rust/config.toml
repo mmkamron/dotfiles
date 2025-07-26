@@ -6,6 +6,12 @@ theme = "solarized-dark"
 idle_bg = "#123456"
 idle_fg = "#abcdef"
 
+[[block]]
+block = "custom"
+interval = 10
+command = ''' mosquitto_sub -h 127.0.0.1 -t "tele/+/SENSOR" -C 1 | jq '.DHT11.Temperature' '''
+format = "{$text}°C"
+
 [icons]
 icons = "material-nf"
 [icons.overrides]
@@ -25,7 +31,7 @@ full_format = "$icon $percentage"
 
 [[block]]
 block = "net"
-format = " $icon {$signal_strength}"
+format = "$icon {$signal_strength}"
 
 [[block]]
 block = "time"
