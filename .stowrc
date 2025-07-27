@@ -1,0 +1,5 @@
+--target=~/.config
+--ignore=.stowrc
+--ignore=pkglist
+--ignore=apple.kbd
+--ignore=zsh
