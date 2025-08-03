@@ -24,32 +24,16 @@ alias v="nvim"
 alias V="sudo vim"
 alias p="sudo pacman"
 alias g="git clone"
-alias z="devour zathura"
+alias z="zathura"
 alias grep="rga"
 alias cat="bat"
 alias find="fd"
 alias dig="dog"
 alias df="dysk"
-alias mpv="devour mpv"
-alias get_esp32='export PATH="$PATH:$HOME/esp/xtensa-esp32-elf/bin"'
+alias mpv="mpv"
 
 eval "$(zoxide init --cmd cd zsh)"
 
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
-}
-
-EDITOR=nvim
-
-PATH="$PATH:/usr/share/bcc/tools"
-PATH="$PATH:$GOBIN"
-
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 
-# Created by `pipx` on 2025-07-19 05:03:09
-export PATH="$PATH:/home/mmkamron/.local/bin"
 export AI_PROVIDER="pollinations"

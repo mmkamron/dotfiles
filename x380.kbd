@@ -1,0 +1,26 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  tab            bspc
+  caps h j k l
+  lmet lalt spc rmet
+)
+
+(deflayer default
+  @nav              del
+  @cap _ _ _ _
+  _ lmet _ bspc
+)
+
+(deflayer arrows
+  _ _
+  _ left down up rght
+  _ _ _ _
+)
+
+(defalias
+  cap (tap-hold-press 200 200 esc lctl)
+  nav (tap-hold-press 200 200 tab (layer-toggle arrows))
+)
