@@ -34,6 +34,13 @@ alias mpv="mpv"
 
 eval "$(zoxide init --cmd cd zsh)"
 
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+nru() {
+  nix run --impure --option allowUnfree true --option allowInsecure true "nixpkgs#$1"
+}
+
+nr() {
+  nix run "nixpkgs#$1"
+}
 
 export AI_PROVIDER="pollinations"
+

@@ -11,7 +11,7 @@
 (deflayer default
   @nav              del prnt
   @cap _ _ _ _
-  _ _ lalt _ bspc
+  _ _ _ _ bspc
 )
 
 (deflayer arrows
