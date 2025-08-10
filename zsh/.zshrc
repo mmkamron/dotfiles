@@ -41,5 +41,9 @@ nru() {
 }
 
 nr() {
-  nix run "nixpkgs#$1"
+  nix run "nixpkgs#$1" -- "${@:2}"
+}
+
+ns() {
+  nix-shell -p $1
 }

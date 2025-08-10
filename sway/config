@@ -5,6 +5,7 @@ font pango:JetBrainsMono Nerd Font 8
 font pango:DejaVu Sans Mono 8
 
 include ~/.config/sway/outputs
+output * scale 1.5
 
 exec --no-startup-id swaybg --image ~/bg.png
 exec --no-startup-id wl-paste --watch cliphist store
@@ -33,7 +34,7 @@ bindsym $mod+w exec firefox
 # kill focused window
 bindsym $mod+q kill
 
-bindsym $mod+space exec wofi --show run
+bindsym $mod+space exec wmenu-run -i
 bindsym $mod+i exec cliphist list | wofi -S dmenu | cliphist decode | wl-copy
 
 # change focus
@@ -169,7 +170,7 @@ bar {
     position bottom
     mode hide
     modifier $mod
-    status_command /usr/bin/i3status-rs ~/.config/i3status-rust/config.toml
+    status_command /run/current-system/sw/bin/i3status-rs ~/.config/i3status-rust/config.toml
     colors {
         separator #666666
         background #222222
