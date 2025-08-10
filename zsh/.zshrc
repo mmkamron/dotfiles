@@ -20,6 +20,7 @@ setopt hist_find_no_dups
 # Aliases
 alias man="batman"
 alias ls="eza"
+alias l="eza -lah"
 alias v="nvim"
 alias V="sudo vim"
 alias p="sudo pacman"
@@ -31,6 +32,7 @@ alias find="fd"
 alias dig="dog"
 alias df="dysk"
 alias mpv="mpv"
+alias rss="newsboat -C ~/.config/newsboat/config"
 
 eval "$(zoxide init --cmd cd zsh)"
 
@@ -41,6 +43,3 @@ nru() {
 nr() {
   nix run "nixpkgs#$1"
 }
-
-export AI_PROVIDER="pollinations"
-
