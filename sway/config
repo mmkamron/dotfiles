@@ -5,17 +5,24 @@ font pango:JetBrainsMono Nerd Font 8
 font pango:DejaVu Sans Mono 8
 
 include ~/.config/sway/outputs
-output * scale 1.5
+
+input "2:14:ETPS/2_Elantech_TrackPoint" {
+    accel_profile "flat"
+    pointer_accel 1
+}
 
 exec --no-startup-id swaybg --image ~/bg.png
 exec --no-startup-id wl-paste --watch cliphist store
+exec --no-startup-id dunst
+exec wl-clipboard-manager -t
+exec_always systemctl --user start blueman-applet.service
 
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym $mod+equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym $mod+Shift+equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +15%
-bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym $mod+Shift+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -15%
-bindsym $mod+Shift+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym $mod+equal exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+
+bindsym $mod+Shift+equal exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.15+
+bindsym $mod+minus exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-
+bindsym $mod+Shift+minus exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.15-
+bindsym $mod+Shift+m exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -74,8 +81,8 @@ bindsym $mod+u layout tabbed
 bindsym $mod+t layout toggle split
 
 # laptop monitor
-bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 5
-bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym Shift+XF86MonBrightnessUp exec brightnessctl set 5%+
 
 # external monitor
 bindsym XF86MonBrightnessUp exec ddcutil setvcp 10 + 10

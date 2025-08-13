@@ -1,5 +1,5 @@
 --target=~/.config
 --ignore=.stowrc
 --ignore=pkglist
---ignore=*.kbd
+--ignore='\.kbd$'
 --ignore=zsh
