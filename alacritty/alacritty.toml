@@ -83,8 +83,8 @@ y = 0
 
 [[keyboard.bindings]]
 action = "Paste"
-key = "P"
-mods = "Control"
+key = "V"
+mods = "Control|Shift"
 
 [[keyboard.bindings]]
 action = "Copy"
